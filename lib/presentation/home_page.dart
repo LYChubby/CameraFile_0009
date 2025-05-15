@@ -45,6 +45,7 @@ class HomePage extends StatelessWidget {
                         },
                       ),
                     ),
+                    const SizedBox(width: 15),
                     ElevatedButton.icon(
                       icon: Icon(Icons.folder),
                       label: const Text("Pilih Dari Galeri"),
