@@ -185,4 +185,28 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
     }
     return super.close();
   }
+
+  Future<void> _onRequestPermission(
+    RequestPermission event,
+    Emitter<CameraState> emit,
+  ) async {
+    final statuses =
+        await [
+          Permission.camera,
+          Permission.microphone,
+          Permission.storage,
+        ].request();
+
+    final denied = statuses.entries.where((e) => !e.value.isGranted).toList();
+
+    if (denied.isNotEmpty) {
+      if (state is CameraReady) {
+        emit(
+          (state as CameraReady).copyWith(
+            snackbarMessage: 'Izin Kamera Atau Penyimpanan Ditolak',
+          ),
+        );
+      }
+    }
+  }
 }
