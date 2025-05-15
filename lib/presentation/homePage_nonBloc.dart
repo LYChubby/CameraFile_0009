@@ -65,6 +65,7 @@ class _FullPageState extends State<FullPage> {
                     onPressed: _takePicture,
                   ),
                 ),
+                const SizedBox(width: 15),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.folder),
                   label: const Text("Pilih Dari Galeri"),
